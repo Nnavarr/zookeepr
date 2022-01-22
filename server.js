@@ -118,7 +118,23 @@ app.post('/api/animals', (req, res) => {
   }
 });
 
+// serve html file
 app.get('/', (req, res) =>{
+  res.sendFile(path.join(__dirname, './public/index.html'));
+})
+
+// animals  html
+app.get('/animals', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/animals.html'));
+})
+
+// zookepers html
+app.get('/zookeepers', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/zookeepers.html'));
+})
+
+// wildcard route to capture all other requests This should always come last!
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './public/index.html'));
 })
 
